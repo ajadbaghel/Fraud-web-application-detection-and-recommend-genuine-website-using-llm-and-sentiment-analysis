@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .container {
+            width: 500px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .fraud {
+            color: red;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .genuine {
+            color: green;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .info {
+            margin-top: 10px;
+            color: #444;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Website Analysis Result</h2>
+
+        <p><strong>Website:</strong> {{ url }}</p>
+        <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+
+        {% if result == "Fraud Website" %}
+            <p class="fraud">{{ result }}</p>
+        {% else %}
+            <p class="genuine">{{ result }}</p>
+        {% endif %}
+
+        {% if recommended %}
+            <p class="info"><strong>Recommended Genuine Site:</strong></p>
+            <a href="{{ recommended }}" target="_blank">{{ recommended }}</a>
+        {% endif %}
+
+        {% if explanation %}
+            <p class="info"><strong>Explanation:</strong></p>
+            <p class="info">{{ explanation }}</p>
+        {% endif %}
+
+        <a href="/">Check another website</a>
+    </div>
+</body>
+</html>
